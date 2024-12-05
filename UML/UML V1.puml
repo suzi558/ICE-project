@@ -36,7 +36,7 @@ Class Timer{
 +startTimer()
 +stopTimer()
 }
-Class Question{
+Class Questions{
 -int id
 -String text
 -String correctAnswer
@@ -51,7 +51,7 @@ Class Question{
 Class SQLite{
 +void connect()
 +void saveData()
-+ArrayList<Question> getQuestionsByCategory(int categoryId)
++ArrayList<Questions> getQuestionsByCategory(int categoryId)
 +ArrayList<Categories> getCategories()
 }
 Class TextUI{
@@ -74,7 +74,7 @@ FamilyFeud *-- TeamHandler
 FamilyFeud *-- Timer
 FamilyFeud *-- TextUI
 
-Categories *-- Question
+Categories *-- Questions
 TeamHandler *-- Team
 SQLite <-- Categories : "Henter og gemmer"
 SQLite <-- Question : "Henter og gemmer"

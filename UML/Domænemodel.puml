@@ -4,7 +4,7 @@ Class Categories
 Class Team
 Class TeamHandler
 Class Timer
-Class Question
+Class Questions
 Class SQLite
 Class TextUI
 Class Round
@@ -14,9 +14,9 @@ FamilyFeud *-- TeamHandler
 FamilyFeud *-- Timer
 FamilyFeud *-- TextUI
 
-Categories *-- Question
+Categories *-- Questions
 TeamHandler *-- Team
 SQLite <-- Categories : "Henter og gemmer"
-SQLite <-- Question : "Henter og gemmer"
+SQLite <-- Questions : "Henter og gemmer"
 Timer <-- Round
 @enduml
