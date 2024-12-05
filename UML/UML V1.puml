@@ -21,7 +21,7 @@ Class Team{
 - String teamName
 -int point
 +Team()
-+showPoint()
++addPoint(int point)
 
 }
 Class TeamHandler{
