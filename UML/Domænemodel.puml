@@ -1,0 +1,22 @@
+@startuml
+Class FamilyFeud
+Class Categories
+Class Team
+Class TeamHandler
+Class Timer
+Class Question
+Class SQLite
+Class TextUI
+Class Round
+
+FamilyFeud *-- Categories
+FamilyFeud *-- TeamHandler
+FamilyFeud *-- Timer
+FamilyFeud *-- TextUI
+
+Categories *-- Question
+TeamHandler *-- Team
+SQLite <-- Categories : "Henter og gemmer"
+SQLite <-- Question : "Henter og gemmer"
+Timer <-- Round
+@enduml
