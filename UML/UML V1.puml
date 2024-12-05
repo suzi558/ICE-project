@@ -1,0 +1,72 @@
+@startuml
+Class FamilyFeud
+Class Categories{
+-int id
+-String CategoryName
+-ArrayList<Question> questions
+-SQLite sqlite
++Categories(int id, String name)
++ void loadQuestions()
+}
+Class Team{
+- String teamName
+-int point
++Team()
+
+}
+Class TeamHandler{
+-SQLite sqlite
++TeamHandler()
++void addTeam(Team team)
++SaveTeam()
++Team getWinner()
+}
+Class Timer{
++startTimer()
++stopTimer()
+}
+Class Question{
+-int id
+-String text
+-String correctAnswer
+-int points
+-SQLite sqlite
++Question(int id, String text, String correctAnswer, int points)
++int getId()
++String getText()
++String getCorrectAnswer()
++int getPoints()
+}
+Class SQLite{
++void connect()
++void saveData()
++ArrayList<Question> getQuestionsByCategory(int categoryId)
++ArrayList<Categories> getCategories()
+}
+Class TextUI{
+- Scanner scanner
++ void displayMsg(String s)
++ int promptNumeric(String msg)
++ String promptText(String msg)
++ int promptChoice(String msg, ArrayList<String> list)
+}
+Class Round{
+ -int roundNumber
+  -Timer timer
+  -Categories currentCategory
+  +Round(int roundNumber, Categories category)
+  +void startRound()
+  +void stopRound()
+}
+FamilyFeud *-- Categories
+FamilyFeud *-- TeamHandler
+FamilyFeud *-- Timer
+FamilyFeud *-- TextUI
+
+Categories *-- Question
+TeamHandler *-- Team
+SQLite <-- Categories : "Henter og gemmer"
+SQLite <-- Question : "Henter og gemmer"
+Timer <-- Round
+
+@enduml
