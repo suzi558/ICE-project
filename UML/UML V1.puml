@@ -1,5 +1,14 @@
 @startuml
-Class FamilyFeud
+Class FamilyFeud{
+-team : List<Team>
+-categories: List<Categories>
+-currentRound: Round
+- timer: Timer
++ startGame()
++ nextRound()
++ endGame()
++ displayScores()
+}
 Class Categories{
 -int id
 -String CategoryName
@@ -12,6 +21,7 @@ Class Team{
 - String teamName
 -int point
 +Team()
++showPoint()
 
 }
 Class TeamHandler{
@@ -20,6 +30,7 @@ Class TeamHandler{
 +void addTeam(Team team)
 +SaveTeam()
 +Team getWinner()
++updatePoint()
 }
 Class Timer{
 +startTimer()
