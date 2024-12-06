@@ -28,7 +28,7 @@ public void connect (String url){
         ResultSet rs = stmt.executeQuery(question);
 
         while(rs.next()){
-            r
+            String row =
         }
     }
     }
