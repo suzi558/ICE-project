@@ -46,6 +46,8 @@ public class Categories {
             }
         } catch (ClassCastException e) {
             System.err.println("Fejl ved typekonvertering af spørgsmål: " + e.getMessage());
+            //håndterer situationer, hvor dataene ikke kan konverteres
+            // til den forventede type (fx int eller String).
         }
     }
 }
