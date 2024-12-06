@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
+
 public class Categories {
     private int id;
     private String CategoryName;
@@ -14,7 +16,7 @@ public class Categories {
     }
 
     public void loadQuestions(){
-
+    List<List<Object>> result =
     }
 
 }
