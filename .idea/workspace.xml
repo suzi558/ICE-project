@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c7a60ee-1847-4099-953e-4a53e2ae09f8" name="Changes" comment="lavet categories questions klasser">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8c7a60ee-1847-4099-953e-4a53e2ae09f8" name="Changes" comment="øndring i questions klassen og categories klassen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="mariam1" />
+        <entry key="$PROJECT_DIR$" value="mariam" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,10 +51,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "DefaultPlantUmlFileTemplate": "UML Class",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "mariam",
+    "git-widget-placeholder": "mariam2",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/elmir/OneDrive/Dokumenter/ICE-project",
     "node.js.detected.package.eslint": "true",
@@ -156,7 +155,55 @@
       <option name="project" value="LOCAL" />
       <updated>1733474172801</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="i gang med categories">
+      <option name="closed" value="true" />
+      <created>1733475855695</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1733475855695</updated>
+    </task>
+    <task id="LOCAL-00010" summary="i gang med categories">
+      <option name="closed" value="true" />
+      <created>1733477812139</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1733477812139</updated>
+    </task>
+    <task id="LOCAL-00011" summary="i gang med categories + ændring flere steder">
+      <option name="closed" value="true" />
+      <created>1733478297806</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1733478297806</updated>
+    </task>
+    <task id="LOCAL-00012" summary="i gang med categories + ændring flere steder">
+      <option name="closed" value="true" />
+      <created>1733478923015</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733478923015</updated>
+    </task>
+    <task id="LOCAL-00013" summary="i gang med categories">
+      <option name="closed" value="true" />
+      <created>1733479050872</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733479050872</updated>
+    </task>
+    <task id="LOCAL-00014" summary="øndring i questions klassen og categories klassen">
+      <option name="closed" value="true" />
+      <created>1733479454184</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733479454184</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +215,9 @@
     <MESSAGE value="lavet categories questions klasser (kun skrivet metoderne ind)" />
     <MESSAGE value="o" />
     <MESSAGE value="lavet categories questions klasser" />
-    <option name="LAST_COMMIT_MESSAGE" value="lavet categories questions klasser" />
+    <MESSAGE value="i gang med categories + ændring flere steder" />
+    <MESSAGE value="i gang med categories" />
+    <MESSAGE value="øndring i questions klassen og categories klassen" />
+    <option name="LAST_COMMIT_MESSAGE" value="øndring i questions klassen og categories klassen" />
   </component>
 </project>
