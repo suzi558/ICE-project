@@ -22,7 +22,8 @@ Class Team{
 -int point
 +Team()
 +addPoint(int point)
-
++getTeamName
++getPoint
 }
 Class TeamHandler{
 -SQLite sqlite
