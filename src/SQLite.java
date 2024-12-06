@@ -6,5 +6,7 @@ import java.util.List;
 public class SQLite {
     private Connection connection;
 
-    public List<List<Object>> getQuestionsByCategory(int categoryId);
+   public List<List<Object>> getQuestionsByCategory(int categoryId){
+       return null;
+   }
 }

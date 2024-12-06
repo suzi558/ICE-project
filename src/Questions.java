@@ -5,7 +5,7 @@ public class Questions {
     private int points;
     private SQLite sqLite;
 
-    public Questions(int id, String text, String correctAnswer, int points) {
+    public Questions(int id, String text, String correctAnswer, String otherChoice1, String otherChoice2, int points ) {
         this.id = id;
         this.text = text;
         this.correctAnswer = correctAnswer;
