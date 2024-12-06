@@ -1,4 +1,5 @@
 @startuml
+!pragma layout smetana
 Class FamilyFeud{
 -team : List<Team>
 -categories: List<Categories>
