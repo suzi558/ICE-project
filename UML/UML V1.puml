@@ -1,5 +1,5 @@
 @startuml
-Class FamilyFeud{
+Class TrivialPursuit{
 -team : List<Team>
 -categories: List<Categories>
 -currentRound: Round
@@ -40,12 +40,16 @@ Class Questions{
 -int id
 -String text
 -String correctAnswer
+-String getOtherChoice1
+-String getOtherChoice2
 -int points
 -SQLite sqlite
-+Question(int id, String text, String correctAnswer, int points)
++Question(int id, String text, String correctAnswer, String getOtherChoice1, String getOtherChoice2, int points)
 +int getId()
 +String getText()
 +String getCorrectAnswer()
++String getOtherChoice1()
++String getOtherChoice2()
 +int getPoints()
 }
 Class SQLite{
@@ -69,15 +73,14 @@ Class Round{
   +void startRound()
   +void stopRound()
 }
-FamilyFeud *-- Categories
-FamilyFeud *-- TeamHandler
-FamilyFeud *-- Timer
-FamilyFeud *-- TextUI
+TrivialPursuit *-- Categories
+TrivialPursuit *-- TeamHandler
+TrivialPursuit *-- Timer
+TrivialPursuit *-- TextUI
 
 Categories *-- Questions
 TeamHandler *-- Team
 SQLite <-- Categories : "Henter og gemmer"
 SQLite <-- Question : "Henter og gemmer"
 Timer <-- Round
-
 @enduml
