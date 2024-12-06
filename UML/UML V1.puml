@@ -1,5 +1,5 @@
 @startuml
-Class FamilyFeud{
+Class TrivialPursuit{
 -team : List<Team>
 -categories: List<Categories>
 -currentRound: Round
@@ -69,10 +69,10 @@ Class Round{
   +void startRound()
   +void stopRound()
 }
-FamilyFeud *-- Categories
-FamilyFeud *-- TeamHandler
-FamilyFeud *-- Timer
-FamilyFeud *-- TextUI
+TrivialPursuit *-- Categories
+TrivialPursuit *-- TeamHandler
+TrivialPursuit *-- Timer
+TrivialPursuit *-- TextUI
 
 Categories *-- Questions
 TeamHandler *-- Team

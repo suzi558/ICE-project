@@ -3,16 +3,15 @@ import java.util.List;
 
 
 public class Categories {
-    private int id;
-    private String CategoryName;
-    private List<Questions> questions;
-    private SQLite sqLite;
+    private int id; // Et unikt ID for kategorien.
+    private String CategoryName; //Navnet på kategorien.
+    private List<Questions> questions; //En liste, der holder på alle spørgsmål i denne kategori.
 
+    //Constructoren initialiserer id og categoryName med de værdier, der gives som parametre.
     public Categories(int id, String categoryName) {
         this.id = id;
         this.CategoryName = categoryName;
         this.questions = new ArrayList<>(); // Initialiser som en tom liste
-        this.sqLite = null;                // Eller fjern det, hvis du ikke skal bruge det her
     }
 
 
@@ -42,15 +41,5 @@ public class Categories {
         } catch (ClassCastException e) {
             System.err.println("Fejl ved typekonvertering af spørgsmål: " + e.getMessage());
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Categories{" +
-                "id=" + id +
-                ", CategoryName='" + CategoryName + '\'' +
-                ", questions=" + questions +
-                ", sqLite=" + sqLite +
-                '}';
     }
 }
