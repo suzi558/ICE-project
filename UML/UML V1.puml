@@ -83,6 +83,6 @@ TrivialPursuit *-- TextUI
 Categories *-- Questions
 TeamHandler *-- Team
 SQLite <-- Categories : "Henter og gemmer"
-SQLite <-- Question : "Henter og gemmer"
+SQLite <-- Questions : "Henter og gemmer"
 Timer <-- Round
 @enduml
