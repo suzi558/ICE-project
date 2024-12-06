@@ -40,12 +40,16 @@ Class Questions{
 -int id
 -String text
 -String correctAnswer
+-String getOtherChoice1
+-String getOtherChoice2
 -int points
 -SQLite sqlite
-+Question(int id, String text, String correctAnswer, int points)
++Question(int id, String text, String correctAnswer, String getOtherChoice1, String getOtherChoice2, int points)
 +int getId()
 +String getText()
 +String getCorrectAnswer()
++String getOtherChoice1()
++String getOtherChoice2()
 +int getPoints()
 }
 Class SQLite{
