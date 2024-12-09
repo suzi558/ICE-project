@@ -23,12 +23,12 @@ public void connect (String url){
     String question = "SELECT Question, correctAnswer, otherChoice, otherChoice2, point FROM QUESTIONS;";
 
     try {
-        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        Statement stmt = conn.createStatement();
         // Execute
         ResultSet rs = stmt.executeQuery(question);
 
         while(rs.next()){
-            String row = rs.getString("Question, correctAnswer, otherChoice, otherChoice2")+","+rs.getInt("point");
+            String row = rs.getString("Question");
             data.add(row);
         }
     } catch (SQLException e) {
