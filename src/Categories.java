@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+
 public class Categories {
     private int id; // Et unikt ID for kategorien.
     private String CategoryName; //Navnet på kategorien.
@@ -51,4 +51,3 @@ public class Categories {
         }
     }
 }
-*/
