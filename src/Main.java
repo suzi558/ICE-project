@@ -3,5 +3,10 @@
 public class Main {
     public static void main(String[] args) {
 
+        SQLite SQL = new SQLite();
+
+        SQL.connect("jdbc:sqlite:identifier.sqlite");
+        SQL.getQuestion();
+        System.out.println(SQL.getQuestion());
     }
 }
