@@ -9,47 +9,51 @@ public class TextUI {
         System.out.println(msg);
     }
 
-        // Beder brugeren om et numerisk svar
+    // Beder brugeren om et numerisk svar
     public int promptNumeric(String msg) {
-        System.out.println(msg);  // Spørg brugeren
-        String input = scan.nextLine();
+        System.out.println(msg);  // Viser beskeden til brugeren
+        String input = scan.nextLine();  // Læser brugerens input som en streng
         try {
-            return Integer.parseInt(input);
+            return Integer.parseInt(input);  // Forsøger at konvertere strengen til et heltal
         } catch (NumberFormatException e) {
-            displayMsg("Please type a valid number");
-            return promptNumeric(msg);
+            displayMsg("Please type a valid number.");  // Fejlmeddelelse ved ugyldigt input
+            return promptNumeric(msg);  // Rekursivt kald for at spørge igen
         }
     }
 
     // Beder brugeren om tekstinput
     public String promptText(String msg) {
-        System.out.println(msg);  // Stille brugeren et spørgsmål
-        return scan.nextLine();
+        System.out.println(msg);  // Viser beskeden til brugeren
+        return scan.nextLine();  // Læser og returnerer input som en streng
     }
 
-    // Viser en liste over kategorier og beder brugeren vælge én
-    public int promptCategory(ArrayList<String> categories) {
-        displayMsg("Choose a category:");
-        displayList(categories, "Categories");
-        int choice = promptNumeric("Enter the number of your choice:");
+    // Henter og viser kategorier fra databasen, og beder brugeren vælge én
+    public int promptCategory(SQLite db) {
+        ArrayList<String> categories = db.getCategories();  // Hent kategorier fra databasen
+        displayMsg("Choose a category:");  // Vis besked til brugeren
+        displayList(categories, "Categories");  // Vis kategorier som en liste
+        int choice = promptNumeric("Enter the number of your choice:");  // Bed brugeren om et valg
+
         if (choice > 0 && choice <= categories.size()) {
-            return choice - 1;  // Returnér indeks
+            return choice;  // Returnér brugerens valg (1-baseret)
         } else {
-            displayMsg("Invalid choice. Try again.");
-            return promptCategory(categories);
+            displayMsg("Invalid choice. Try again.");  // Fejlmeddelelse
+            return promptCategory(db);  // Rekursivt kald for at spørge igen
         }
     }
 
-    // Viser en liste over muligheder og beder brugeren vælge én
-    public int promptChoice(String question, ArrayList<String> choices) {
-        displayMsg("Question: " + question);
-        displayList(choices, "Choices");
-        int choice = promptNumeric("Enter the number of your choice:");
+    // Henter og viser valgmuligheder fra databasen, og beder brugeren vælge én
+    public int promptChoice(SQLite db, int questionId) {
+        ArrayList<String> choices = db.getChoices(questionId);  // Hent valgmuligheder fra databasen
+        displayMsg("Here is your question:");  // Besked til brugeren
+        displayList(choices, "Choices");  // Vis valgmuligheder som en liste
+        int choice = promptNumeric("Enter the number of your choice:");  // Bed brugeren om et valg
+
         if (choice > 0 && choice <= choices.size()) {
-            return choice - 1;  // Returnér indeks
+            return choice;  // Returnér brugerens valg (1-baseret)
         } else {
-            displayMsg("Invalid choice. Try again.");
-            return promptChoice(question, choices);
+            displayMsg("Invalid choice. Try again.");  // Fejlmeddelelse
+            return promptChoice(db, questionId);  // Rekursivt kald for at spørge igen
         }
     }
 
@@ -57,11 +61,11 @@ public class TextUI {
     public void displayList(ArrayList<String> options, String msg) {
         System.out.println("******* " + msg + " *******");
         for (int i = 0; i < options.size(); i++) {
-            System.out.println((i + 1) + ": " + options.get(i));
+            System.out.println((i + 1) + ": " + options.get(i));  // Viser listen som 1-baseret
         }
     }
 
-    // Viser spillets status (f.eks. point for spillere)
+    // Viser spillets status, fx point for spillere
     public void displayStatus(String msg, ArrayList<String> playerStatuses) {
         System.out.println("******* " + msg + " *******");
         for (String status : playerStatuses) {
@@ -69,3 +73,4 @@ public class TextUI {
         }
     }
 }
+
