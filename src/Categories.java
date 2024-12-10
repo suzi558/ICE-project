@@ -1,53 +1,55 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Categories {
     private int id; // Et unikt ID for kategorien.
-    private String CategoryName; //Navnet på kategorien.
-    private List<Questions> questions; //En liste, der holder på alle spørgsmål i denne kategori.
+    private String categoryName; // Navnet på kategorien.
+    private List<Questions> questions; // En liste, der holder på alle spørgsmål i denne kategori.
 
-    //Constructoren initialiserer id og categoryName med de værdier, der gives som parametre.
+    // Constructoren initialiserer id og CategoryName med de værdier, der gives som parametre.
     public Categories(int id, String categoryName) {
         this.id = id;
-        this.CategoryName = categoryName;
+        this.categoryName = categoryName;
         this.questions = new ArrayList<>(); // Initialiser som en tom liste
     }
 
-
+    // Metode til at hente spørgsmål fra databasen
     public void loadQuestions(SQLite sqlite) {
-        List<List<Object>> results = sqlite.getQuestionsByCategory(this.id);
-        // Henter en liste af lister fra databasen baseret på kategorien (via id). results er en liste,
-        // hvor hver indre liste repræsenterer en række i tabellen.
+        // Hent spørgsmål fra databasen, som er relateret til kategorien
+        ArrayList<String> questionData = sqlite.getQuestion();  // Nu en ArrayList<String>
 
-        if (results.isEmpty()) {
-            System.err.println("Ingen spørgsmål fundet for kategori: " + this.id);
+        if (questionData.isEmpty()) {
+            System.out.println("Ingen spørgsmål fundet for kategori: " + this.categoryName);
             return;
-            //Hvis der ikke findes nogen rækker for denne kategori, udskrives
-            // en fejlmeddelelse, og metoden afsluttes.
         }
 
         try {
-            for (List<Object> col : results) { //For hver række (col), som er en liste af objekter, forsøger vi at udtrække dataene.
-                if (col.size() >= 4) { // Sikrer, at rækken har nok kolonner
-                    int id = (int) col.get(1);               // ID
-                    String questionText = (String) col.get(2); // Spørgsmålstekst
-                    String answer = (String) col.get(3);    //  correcte Svar
-                    String otherChoice1 = (String) col.get(4); //Alternative valg
-                    String otherChoice2 = (String) col.get(5); //Alternative valg
-                    int points = (int) col.get(4);           // Point
+            // Gennemgår hver række af resultater fra databasen
+            for (String row : questionData) {  // Iteration over en ArrayList<String>
+                String[] parts = row.split(",");  // Splitter row-strengen til kolonner
 
+                if (parts.length >= 6) { // Vi forventer, at vi har 6 kolonner (ID, spørgsmål, svar, valg, osv.)
+                    int questionId = Integer.parseInt(parts[0]);  // ID for spørgsmålet
+                    String questionText = parts[1];  // Spørgsmålstekst
+                    String correctAnswer = parts[2];  // Korrekt svar
+                    String otherChoice1 = parts[3];  // Alternative valg 1
+                    String otherChoice2 = parts[4];  // Alternative valg 2
+                    int points = Integer.parseInt(parts[5]);  // Point for spørgsmålet
 
-                    //Et nyt spørgsmål oprettes med de udtrukne data og tilføjes til questions-listen.
-                    questions.add(new Questions(id, questionText, answer, otherChoice1, otherChoice2, points));
+                    // Et nyt spørgsmål oprettes med de udtrukne data og tilføjes til questions-listen
+                    questions.add(new Questions(questionId, questionText, correctAnswer, otherChoice1, otherChoice2, points));
                 } else {
-                    System.err.println("Ugyldig række med manglende data: " + col);
-                } //Hvis en række mangler data, udskrives en fejlmeddelelse.
+                    System.err.println("Ugyldig række med manglende data: " + row);
+                }
             }
-        } catch (ClassCastException e) {
-            System.err.println("Fejl ved typekonvertering af spørgsmål: " + e.getMessage());
-            //håndterer situationer, hvor dataene ikke kan konverteres
-            // til den forventede type (fx int eller String).
+        } catch (NumberFormatException e) {
+            System.err.println("Fejl ved typekonvertering af data: " + e.getMessage());
         }
+    }
+
+
+    // Getter for questions
+    public List<Questions> getQuestions() {
+        return questions;
     }
 }
