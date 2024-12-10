@@ -37,6 +37,30 @@ public void connect (String url){
     return data;
     }
 
+    public ArrayList<String> getCategories(){
+            ArrayList<String> data = new ArrayList<>();
+
+            String categories = "SELECT Category FROM Categories";
+
+            try {
+
+                Statement stmt = conn.createStatement();
+
+                ResultSet rs = stmt.executeQuery(categories);
+
+                while(rs.next()){
+
+                    String row = rs.getString("Category");
+                    data.add(row);
+                }
+
+            }
+            catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        return data;
+    }
+
 
     }
 

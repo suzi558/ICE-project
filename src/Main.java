@@ -12,12 +12,20 @@ public class Main {
         SQL.connect(url);
         SQL.getQuestion();
 
-        ArrayList<String> data = SQL.getQuestion();
-        getData(data);
+        ArrayList<String> categories = SQL.getCategories();
+        getCategories(categories);
+
+        ArrayList<String> questions = SQL.getQuestion();
+        getData(questions);
     }
 
-    public static void getData(ArrayList<String> data){
-        for (String s: data){
+    public static void getCategories(ArrayList<String> categories){
+        for (String c: categories) {
+            System.out.println(c); }
+        }
+
+    public static void getData(ArrayList<String> questions){
+        for (String s: questions){
             System.out.println(s);
         }
     }
