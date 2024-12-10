@@ -47,7 +47,6 @@ public class Categories {
         }
     }
 
-
     // Getter for questions
     public List<Questions> getQuestions() {
         return questions;
