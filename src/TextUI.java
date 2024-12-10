@@ -44,7 +44,7 @@ public class TextUI {
 
     // Henter og viser valgmuligheder fra databasen, og beder brugeren vælge én
     public int promptChoice(SQLite db, int questionId) {
-        ArrayList<String> choices = db.getQuestion(questionId);  // Hent valgmuligheder fra databasen
+        ArrayList<String> choices = db.getQuestion();  // Hent valgmuligheder fra databasen
         displayMsg("Here is your question:");  // Besked til brugeren
         displayList(choices, "Choices");  // Vis valgmuligheder som en liste
         int choice = promptNumeric("Enter the number of your choice:");  // Bed brugeren om et valg
