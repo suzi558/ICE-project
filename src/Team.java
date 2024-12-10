@@ -5,7 +5,7 @@ public class Team {
 
     public Team(String teamName) {
         this.teamName = teamName;
-        this.points = points;
+        this.points = 0;
     }
 
     public String getTeamName() {
