@@ -16,9 +16,9 @@ public class TeamHandler {
     }
 
     // Metode til at gemme et team
-    public void saveTeam(Team team) {
+   /* public void saveTeam(Team team) {
       //  sqlite.saveData();
-    }
+    }*/
 
     // Metode til at få vinderen af spillet
     public Team getWinner() {
