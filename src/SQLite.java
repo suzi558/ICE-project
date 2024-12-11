@@ -16,27 +16,41 @@ public void connect (String url){
     }
 }
 
-    public ArrayList<String> getQuestion(){
-    ArrayList<String> data = new ArrayList<>();
+    public ArrayList<Questions> getQuestions() {
+        ArrayList<Questions> questionsList = new ArrayList<>();
 
-    //Query String
-    String question = "SELECT Question, correctAnswer, otherChoice, otherChoice2, point FROM QUESTIONS;";
+        // Query String
+        String question = "SELECT ID, Question, correctAnswer, otherChoice, otherChoice2, point, CategoryID FROM QUESTIONS;";
 
-    try {
-        Statement stmt = conn.createStatement();
-        // Execute
-        ResultSet rs = stmt.executeQuery(question);
+        try {
+            Statement stmt = conn.createStatement();
+            // Execute
+            ResultSet rs = stmt.executeQuery(question);
 
-        while(rs.next()){
-            String row = rs.getString("Question");
-            data.add(row);
+            while (rs.next()) {
+                // Fetch data for each column
+                int id = rs.getInt("ID");
+                String text = rs.getString("Question");
+                String correctAnswer = rs.getString("correctAnswer");
+                String otherChoice1 = rs.getString("otherChoice");
+                String otherChoice2 = rs.getString("otherChoice2");
+                int points = rs.getInt("point");
+                int categoryID = rs.getInt("CategoryID");
+
+                // Create a Questions object
+                Questions quest = new Questions(id, text, correctAnswer, otherChoice1, otherChoice2, points, categoryID);
+
+                // Add the Questions object to the list
+                questionsList.add(quest);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-    }
-    return data;
+
+        return questionsList;
     }
 
+/*
     public ArrayList<String> getCategories(){
             ArrayList<String> data = new ArrayList<>();
 
@@ -158,7 +172,7 @@ public void connect (String url){
     }
 
     }
-
+*/
 
 
 
