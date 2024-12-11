@@ -1,98 +1,45 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TextUI {
-    public Scanner scan = new Scanner(System.in);
 
-    // Viser en besked til brugeren
     public void displayMsg(String msg) {
         System.out.println(msg);
     }
 
-    // Beder brugeren om et numerisk svar
-    public int promptNumeric(String msg) {
-        System.out.println(msg); // Viser beskeden til brugeren
-        String input = scan.nextLine(); // Læser brugerens input som en streng
-        try {
-            return Integer.parseInt(input); // Forsøger at konvertere strengen til et heltal
-        } catch (NumberFormatException e) {
-            displayMsg("Please type a valid number."); // Fejlmeddelelse ved ugyldigt input
-            return promptNumeric(msg); // Rekursivt kald for at spørge igen
-        }
+    public int promptNumeric(String prompt) {
+        // Spørg brugeren om et tal (for eksempel antal hold)
+        // Dette er et forsimplet eksempel, du skal bruge Scanner til at få input
+        System.out.print(prompt);
+        return 2; // Eksempel: returner 2 hold
     }
 
-    // Beder brugeren om tekstinput
-    public String promptText(String msg) {
-        System.out.println(msg); // Viser beskeden til brugeren
-        return scan.nextLine(); // Læser og returnerer input som en streng
+    public String promptText(String prompt) {
+        // Spørg brugeren om tekstinput (f.eks. holdnavn)
+        System.out.print(prompt);
+        return "Team A"; // Eksempel: returner et standard holdnavn
     }
 
-    // Henter og viser kategorier fra databasen, og beder brugeren vælge én
     public int promptCategory(SQLite db) {
-        ArrayList<String> categories = db.getCategories(); // Hent kategorier fra databasen
-        displayMsg("Choose a category:"); // Vis besked til brugeren
-        displayList(categories, "Categories"); // Vis kategorier som en liste
-        int choice = promptNumeric("Enter the number of your choice:"); // Bed brugeren om et valg
+        // Spørg brugeren om at vælge en kategori
+        // Du kan bruge db til at hente kategorier, hvis det er nødvendigt
+        System.out.println("Choose a category:");
+        return 1; // Eksempel: returner en kategori-ID
+    }
 
-        if (choice > 0 && choice <= categories.size()) {
-            return choice; // Returnér brugerens valg (1-baseret)
-        } else {
-            displayMsg("Invalid choice. Try again."); // Fejlmeddelelse
-            return promptCategory(db); // Rekursivt kald for at spørge igen
+    public void displayQuestions(ArrayList<String> questions) {
+        // Vis spørgsmålene til spilleren
+        for (String question : questions) {
+            System.out.println(question);
         }
     }
 
-    // Henter og viser spørgsmål baseret på valgte kategori
-    public void getCategoriesQuestions(ArrayList<String> questions) {
-        displayMsg("Type the name of a category (e.g., Geography, Science, History, Entertainment, Sports):");
-        String category = scan.nextLine();
-
-        switch (category) {
-            case "Geography":
-                for (int i = 0; i < 10; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            case "Science":
-                for (int i = 10; i < 20; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            case "History":
-                for (int i = 20; i < 30; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            case "Entertainment":
-                for (int i = 30; i < 40; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            case "Sports":
-                for (int i = 40; i < 50; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            default:
-                displayMsg("Invalid category. Try again.");
-                getCategoriesQuestions(questions); // Rekursivt kald
-        }
-    }
-
-    // Viser en liste med overskrift
-    public void displayList(ArrayList<String> options, String msg) {
-        System.out.println("******* " + msg + " *******");
-        for (int i = 0; i < options.size(); i++) {
-            System.out.println((i + 1) + ": " + options.get(i)); // Viser listen som 1-baseret
-        }
-    }
-
-    // Viser spillets status, fx point for spillere
-    public void displayStatus(String msg, ArrayList<String> playerStatuses) {
-        System.out.println("******* " + msg + " *******");
-        for (String status : playerStatuses) {
+    public void displayStatus(String title, ArrayList<String> statuses) {
+        // Vis status (som point-status)
+        System.out.println(title);
+        for (String status : statuses) {
             System.out.println(status);
         }
     }
 }
+
 

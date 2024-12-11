@@ -8,7 +8,7 @@ public class Round {
     // Constructor
     public Round(ArrayList<String> questions) {
         this.questions = questions;
-        this.currentQuestionIndex = 1; // Start med det første spørgsmål
+        this.currentQuestionIndex = 0; // Start med det første spørgsmål (0-baseret indeks)
         this.score = 0; // Start med en score på 0
     }
 
@@ -42,3 +42,4 @@ public class Round {
         return currentQuestionIndex < questions.size();
     }
 }
+

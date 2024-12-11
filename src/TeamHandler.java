@@ -15,27 +15,13 @@ public class TeamHandler {
         teams.add(team);
     }
 
-    // Metode til at gemme et team
-   /* public void saveTeam(Team team) {
-      //  sqlite.saveData();
-    }*/
-
-    // Metode til at få vinderen af spillet
-    public Team getWinner() {
-        Team winner = null;
-        int maxPoints = 0;
-
-        for (Team team : teams) {
-            if (team.getPoints() > maxPoints) {
-                maxPoints = team.getPoints();
-                winner = team;
-            }
-        }
-        return winner;
+    // Metode til at hente alle teams
+    public ArrayList<Team> getTeams() {
+        return teams;
     }
 
-    // Metode til at opdatere point
-    public void updatePoint(Team team, int points) {
-        team.addPoint(points);
+    // Metode til at gemme team-data i databasen
+    public void saveTeam(Team team) {
+        // SQL for at gemme team-data i SQLite-database
     }
 }

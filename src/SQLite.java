@@ -1,68 +1,55 @@
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class SQLite {
 
-Connection conn;
+    private Connection conn;
 
-public void connect (String url){
+    // Konstruktor - opretter forbindelse til databasen
+    public SQLite() {
+        try {
+            // Erstat med din database-URL, hvis du bruger en rigtig SQLite-database
+            String url = "jdbc:sqlite:trivial_pursuit.db";  // SQLite databasefil
+            conn = DriverManager.getConnection(url);        // Opretter forbindelsen
+            System.out.println("Connection to SQLite has been established.");
+        } catch (SQLException e) {
+            System.out.println("Connection to SQLite failed: " + e.getMessage());
+        }
+    }
 
-    try {
-        conn = DriverManager.getConnection(url);
-        System.out.println("SQL connect works! HALLELUJAH");
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
+    // Henter spørgsmål for en valgt kategori
+    public ArrayList<String> getQuestions(int categoryId) {
+        ArrayList<String> questions = new ArrayList<>();
+        String query = "SELECT question_text FROM questions WHERE category_id = ?";  // SQL-forespørgsel
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, categoryId);  // Sætter kategori-ID'et
+            ResultSet rs = pstmt.executeQuery();  // Udfører forespørgslen
+
+            // Henter spørgsmål fra resultatsættet
+            while (rs.next()) {
+                String question = rs.getString("question_text");
+                questions.add(question);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error while retrieving questions: " + e.getMessage());
+        }
+
+        return questions;  // Returner listen af spørgsmål
+    }
+
+    // Lukker forbindelsen til databasen
+    public void closeConnection() {
+        try {
+            if (conn != null) {
+                conn.close();
+                System.out.println("Connection closed.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error closing connection: " + e.getMessage());
+        }
     }
 }
-
-    public ArrayList<String> getQuestion(){
-    ArrayList<String> data = new ArrayList<>();
-
-    //Query String
-    String question = "SELECT Question, correctAnswer, otherChoice, otherChoice2, point FROM QUESTIONS;";
-
-    try {
-        Statement stmt = conn.createStatement();
-        // Execute
-        ResultSet rs = stmt.executeQuery(question);
-
-        while(rs.next()){
-            String row = rs.getString("Question");
-            data.add(row);
-        }
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-    }
-    return data;
-    }
-
-    public ArrayList<String> getCategories(){
-            ArrayList<String> data = new ArrayList<>();
-
-            String categories = "SELECT Category FROM Categories";
-
-            try {
-
-                Statement stmt = conn.createStatement();
-
-                ResultSet rs = stmt.executeQuery(categories);
-
-                while(rs.next()){
-
-                    String row = rs.getString("Category");
-                    data.add(row);
-                }
-
-            }
-            catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        return data;
-    }
-
-
-    }
 
 
 
