@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TextUI {
-    private Scanner scan = new Scanner(System.in);
+    public Scanner scan = new Scanner(System.in);
+    TextUI textUI = new TextUI();
 
     // Viser en besked til brugeren
     public void displayMsg(String msg) {
@@ -41,7 +42,7 @@ public class TextUI {
             return promptCategory(db);  // Rekursivt kald for at spørge igen
         }
     }
-
+/*
     // Henter og viser valgmuligheder fra databasen, og beder brugeren vælge én
     public int promptChoice(SQLite db, int questionId) {
         ArrayList<String> choices = db.getQuestion();  // Hent valgmuligheder fra databasen
@@ -56,6 +57,44 @@ public class TextUI {
             return promptChoice(db, questionId);  // Rekursivt kald for at spørge igen
         }
     }
+
+ */
+
+public void getCategoriesQuestions(ArrayList<String> questions) {
+
+
+    switch(textUI.scan.nextLine())
+    {
+
+        case "Geography":
+            for (int i = 0; i <= 10; i++) {
+                System.out.println(questions.get(i));
+            }
+            break;
+        case "Science":
+            for (int i = 10; i <= 20; i++) {
+                System.out.println(questions.get(i));
+            }
+            break;
+        case "History":
+            for (int i = 20; i <= 30; i++) {
+                System.out.println(questions.get(i));
+            }
+            break;
+        case "Entertainment":
+            for (int i = 30; i <= 40; i++) {
+                System.out.println(questions.get(i));
+            }
+            break;
+        case "Sports":
+            for (int i = 40; i == 50; i++) {
+                System.out.println(questions.get(i));
+            }
+            break;
+
+
+    }
+}
 
     // Viser en liste med overskrift
     public void displayList(ArrayList<String> options, String msg) {
