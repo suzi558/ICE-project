@@ -23,10 +23,6 @@ Timer(){
        System.out.println("Time is up ladies and gentlemen!");
        }
 
-
-
-
-
        }
 
     }
