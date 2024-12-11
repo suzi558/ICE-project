@@ -1,9 +1,12 @@
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+
     public static void main(String[] args) {
 
         var url = "jdbc:sqlite:sqlite.db";
@@ -21,41 +24,7 @@ public class Main {
 
     }
 
-    public void getCategories(ArrayList<String> questions) {
 
-
-        switch(TextUI.scan.nextLine())
-        {
-
-            case "1":
-                for (int i = 0; i <= 10; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            case "2":
-                for (int i = 10; i <= 20; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            case "3":
-                for (int i = 20; i <= 30; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            case "4":
-                for (int i = 30; i <= 40; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-            case "5":
-                for (int i = 40; i == 50; i++) {
-                    System.out.println(questions.get(i));
-                }
-                break;
-
-
-        }
-    }
 
 
     /*
