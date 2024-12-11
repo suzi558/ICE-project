@@ -59,6 +59,7 @@ public class TextUI {
     }
 
  */
+
 public void getCategoriesQuestions(ArrayList<String> questions) {
 
 
