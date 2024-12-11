@@ -5,8 +5,9 @@ public class Questions {
     private String otherChoice1;
     private String otherChoice2;
     private int points;
+    private int categoryID;
 
-    public Questions(int id, String text, String correctAnswer, String otherChoice1, String otherChoice2, int points ) {
+    public Questions(int id, String text, String correctAnswer, String otherChoice1, String otherChoice2, int points, int categoryID ) {
         this.id = id;
         this.text = text;
         this.correctAnswer = correctAnswer;

@@ -35,9 +35,10 @@ public class Categories {
                     String otherChoice1 = parts[3];  // Alternative valg 1
                     String otherChoice2 = parts[4];  // Alternative valg 2
                     int points = Integer.parseInt(parts[5]);  // Point for spørgsmålet
+                    int categoryID = Integer.parseInt(parts[6]);
 
                     // Et nyt spørgsmål oprettes med de udtrukne data og tilføjes til questions-listen
-                    questions.add(new Questions(questionId, questionText, correctAnswer, otherChoice1, otherChoice2, points));
+                    questions.add(new Questions(questionId, questionText, correctAnswer, otherChoice1, otherChoice2, points, categoryID));
                 } else {
                     System.err.println("Ugyldig række med manglende data: " + row);
                 }
