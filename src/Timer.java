@@ -22,12 +22,7 @@ Timer(){
        finally {
        System.out.println("Time is up ladies and gentlemen!");
        }
-
-
-
-
-
-       }
+    }
 
     }
 
