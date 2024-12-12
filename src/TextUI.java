@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class TextUI {
     public Scanner scan = new Scanner(System.in);
-    TextUI textUI = new TextUI();
-
     // Viser en besked til brugeren
     public void displayMsg(String msg) {
         System.out.println(msg);
@@ -27,7 +25,7 @@ public class TextUI {
         System.out.println(msg);  // Viser beskeden til brugeren
         return scan.nextLine();  // Læser og returnerer input som en streng
     }
-
+/*
     // Henter og viser kategorier fra databasen, og beder brugeren vælge én
     public int promptCategory(SQLite db) {
         ArrayList<String> categories = db.getCategories();  // Hent kategorier fra databasen
@@ -41,7 +39,7 @@ public class TextUI {
             displayMsg("Invalid choice. Try again.");  // Fejlmeddelelse
             return promptCategory(db);  // Rekursivt kald for at spørge igen
         }
-    }
+    } */
 /*
     // Henter og viser valgmuligheder fra databasen, og beder brugeren vælge én
     public int promptChoice(SQLite db, int questionId) {
@@ -60,41 +58,41 @@ public class TextUI {
 
  */
 
-public void getCategoriesQuestions(ArrayList<String> questions) {
+    public void getCategoriesQuestions(ArrayList<String> questions) {
 
 
-    switch(textUI.scan.nextLine())
-    {
+        switch(textUI.scan.nextLine())
+        {
 
-        case "Geography":
-            for (int i = 0; i <= 10; i++) {
-                System.out.println(questions.get(i));
-            }
-            break;
-        case "Science":
-            for (int i = 10; i <= 20; i++) {
-                System.out.println(questions.get(i));
-            }
-            break;
-        case "History":
-            for (int i = 20; i <= 30; i++) {
-                System.out.println(questions.get(i));
-            }
-            break;
-        case "Entertainment":
-            for (int i = 30; i <= 40; i++) {
-                System.out.println(questions.get(i));
-            }
-            break;
-        case "Sports":
-            for (int i = 40; i == 50; i++) {
-                System.out.println(questions.get(i));
-            }
-            break;
+            case "Geography":
+                for (int i = 0; i <= 10; i++) {
+                    System.out.println(questions.get(i));
+                }
+                break;
+            case "Science":
+                for (int i = 10; i <= 20; i++) {
+                    System.out.println(questions.get(i));
+                }
+                break;
+            case "History":
+                for (int i = 20; i <= 30; i++) {
+                    System.out.println(questions.get(i));
+                }
+                break;
+            case "Entertainment":
+                for (int i = 30; i <= 40; i++) {
+                    System.out.println(questions.get(i));
+                }
+                break;
+            case "Sports":
+                for (int i = 40; i == 50; i++) {
+                    System.out.println(questions.get(i));
+                }
+                break;
 
 
+        }
     }
-}
 
     // Viser en liste med overskrift
     public void displayList(ArrayList<String> options, String msg) {
@@ -112,4 +110,5 @@ public void getCategoriesQuestions(ArrayList<String> questions) {
         }
     }
 }
+
 
