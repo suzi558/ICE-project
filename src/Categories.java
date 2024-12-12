@@ -13,41 +13,32 @@ public class Categories {
         this.questions = new ArrayList<>(); // Initialiser som en tom liste
     }
 
-    // Metode til at hente spørgsmål fra databasen
-    public void loadQuestions(SQLite sqlite) {
-        // Hent spørgsmål fra databasen, som er relateret til kategorien
-        ArrayList<String> questionData = sqlite.getQuestion();  // Nu en ArrayList<String>
-
-        if (questionData.isEmpty()) {
-            System.out.println("Ingen spørgsmål fundet for kategori: " + this.categoryName);
-            return;
-        }
-
-        try {
-            // Gennemgår hver række af resultater fra databasen
-            for (String row : questionData) {  // Iteration over en ArrayList<String>
-                String[] parts = row.split(",");  // Splitter row-strengen til kolonner
-
-                if (parts.length >= 6) { // Vi forventer, at vi har 6 kolonner (ID, spørgsmål, svar, valg, osv.)
-                    int questionId = Integer.parseInt(parts[0]);  // ID for spørgsmålet
-                    String questionText = parts[1];  // Spørgsmålstekst
-                    String correctAnswer = parts[2];  // Korrekt svar
-                    String otherChoice1 = parts[3];  // Alternative valg 1
-                    String otherChoice2 = parts[4];  // Alternative valg 2
-                    int points = Integer.parseInt(parts[5]);  // Point for spørgsmålet
-                    int categoryID = Integer.parseInt(parts[6]);
-
-                    // Et nyt spørgsmål oprettes med de udtrukne data og tilføjes til questions-listen
-                    questions.add(new Questions(questionId, questionText, correctAnswer, otherChoice1, otherChoice2, points, categoryID));
-                } else {
-                    System.err.println("Ugyldig række med manglende data: " + row);
-                }
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Fejl ved typekonvertering af data: " + e.getMessage());
-        }
+    public String getCategoryName() {
+        return categoryName;
     }
 
+
+    // Metode til at hente spørgsmål fra databasen
+    public void loadQuestions(SQLite sqlite) {
+        try {
+            // Hent alle spørgsmål fra SQLite-klassen
+            ArrayList<Questions> allQuestions = sqlite.getQuestions();
+
+            // Filtrer spørgsmålene baseret på kategori-ID
+            for (Questions question : allQuestions) {
+                if (question.getId() == this.id) {
+                    questions.add(question);
+                }
+            }
+
+            if (questions.isEmpty()) {
+                System.out.println("Ingen spørgsmål fundet for kategori: " + this.categoryName);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Fejl under indlæsning af spørgsmål: " + e.getMessage());
+        }
+    }
 
     // Getter for questions
     public List<Questions> getQuestions() {
