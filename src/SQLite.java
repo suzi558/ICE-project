@@ -4,28 +4,28 @@ import java.util.ArrayList;
 
 public class SQLite {
 
-Connection conn;
+    Connection conn;
 
-public void connect (String url){
-
-    try {
-        conn = DriverManager.getConnection(url);
-        System.out.println("SQL connect works! HALLELUJAH");
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-    }
-}
-
-    public ArrayList<Questions> getQuestions() {
-        ArrayList<Questions> questionsList = new ArrayList<>();
-
-        // Query String
-        String question = "SELECT ID, Question, correctAnswer, otherChoice, otherChoice2, point, CategoryID FROM QUESTIONS;";
+    public void connect(String url) {
 
         try {
+            conn = DriverManager.getConnection(url);
+            System.out.println("SQL connect works! HALLELUJAH");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public Questions getQuestionsByCategory(int catID) {
+        String query = "SELECT ID, Question, correctAnswer, otherChoice, otherChoice2, point, CategoryID " + " FROM QUESTIONS WHERE CategoryID = ? LIMIT 1;";
+
+        // Query String
+        //String question = "SELECT ID, Question, correctAnswer, otherChoice, otherChoice2, point, CategoryID FROM QUESTIONS;";
+
+        try (PreparedStatement pstmst = conn.prepareStatement(query)) {
             Statement stmt = conn.createStatement();
             // Execute
-            ResultSet rs = stmt.executeQuery(question);
+            ResultSet rs = pstmst.executeQuery();
 
             while (rs.next()) {
                 // Fetch data for each column
@@ -37,18 +37,16 @@ public void connect (String url){
                 int points = rs.getInt("point");
                 int categoryID = rs.getInt("CategoryID");
 
-                // Create a Questions object
-                Questions quest = new Questions(id, text, correctAnswer, otherChoice1, otherChoice2, points, categoryID);
+                return new Questions(id, text, correctAnswer, otherChoice1, otherChoice2, points, categoryID);
 
-                // Add the Questions object to the list
-                questionsList.add(quest);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return null;
 
-        return questionsList;
     }
+}
 
 /*
     public ArrayList<String> getCategories(){

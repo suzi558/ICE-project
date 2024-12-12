@@ -10,12 +10,24 @@ public class Main {
 
     public static void main(String[] args) {
 
+
         var url = "jdbc:sqlite:sqlite.db";
 
         SQLite SQL = new SQLite();
 
         SQL.connect(url);
-        SQL.getQuestion();
+SQL.connect("jdbc:sqlite:sqlite.db");
+        SQLite.getQuestionsByCategory();
+int chooseCategory = 4;
+Questions question = SQL.getQuestionsByCategory(chooseCategory);
+
+if(question != null){
+    System.out.println("Question" + question.getText());
+    System.out.println("correctAnswer" + question.getCorrectAnswer());
+    System.out.println("otherChoice" + question.getOtherChoice1());
+    System.out.println("otherChoice2" + question.getOtherChoice2());
+
+}
 
 
 
