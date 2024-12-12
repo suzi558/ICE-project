@@ -7,17 +7,20 @@ public class Questions {
     private int points;
     private int categoryID;
 
-    public Questions(int id, String text, String correctAnswer, String otherChoice1, String otherChoice2, int points, int categoryID ) {
+    public Questions(int id, String text, String correctAnswer, String otherChoice1, String otherChoice2, int points, int categoryID) {
         this.id = id;
         this.text = text;
         this.correctAnswer = correctAnswer;
         this.otherChoice1 = otherChoice1;
         this.otherChoice2 = otherChoice2;
         this.points = points;
+        this.categoryID = categoryID; // Tilføj denne linje
     }
-
     public int getId() {
         return id;
+    }
+    public int getCategoryID() {
+        return categoryID;
     }
 
     public String getText() {

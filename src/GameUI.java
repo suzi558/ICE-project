@@ -98,11 +98,8 @@ public class GameUI {
 
     private Questions getQuestion(Categories category) {
         List<Questions> questions = category.getQuestions();
-        for (Questions question : questions) {
-            if (question != null) {
-                questions.remove(question);
-                return question;
-            }
+        if (!questions.isEmpty()) {
+            return questions.remove(0); // Returner og fjern det første spørgsmål
         }
         return null;
     }

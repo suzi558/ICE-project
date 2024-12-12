@@ -26,7 +26,7 @@ public class Categories {
 
             // Filtrer spørgsmålene baseret på kategori-ID
             for (Questions question : allQuestions) {
-                if (question.getId() == this.id) {
+                if (question.getCategoryID() == this.id) {
                     questions.add(question);
                 }
             }
