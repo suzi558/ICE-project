@@ -49,9 +49,7 @@ public class SQLite {
 
         return questionsList;
     }
-}
 
-/*
     public ArrayList<String> getCategories(){
             ArrayList<String> data = new ArrayList<>();
 
@@ -173,7 +171,7 @@ public class SQLite {
     }
 
     }
-*/
+
 
 
 

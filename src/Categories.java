@@ -1,4 +1,3 @@
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +12,11 @@ public class Categories {
         this.categoryName = categoryName;
         this.questions = new ArrayList<>(); // Initialiser som en tom liste
     }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
 
     // Metode til at hente spørgsmål fra databasen
     public void loadQuestions(SQLite sqlite) {

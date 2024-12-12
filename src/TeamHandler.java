@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class TeamHandler {
-    private ArrayList<Team> teams;
+    public ArrayList<Team> teams;
     private SQLite sqlite;
 
     // Konstruktør

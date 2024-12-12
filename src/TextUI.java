@@ -27,7 +27,7 @@ public class TextUI {
         System.out.println(msg);  // Viser beskeden til brugeren
         return scan.nextLine();  // Læser og returnerer input som en streng
     }
-
+/*
     // Henter og viser kategorier fra databasen, og beder brugeren vælge én
     public int promptCategory(SQLite db) {
         ArrayList<String> categories = db.getCategories();  // Hent kategorier fra databasen
@@ -41,7 +41,7 @@ public class TextUI {
             displayMsg("Invalid choice. Try again.");  // Fejlmeddelelse
             return promptCategory(db);  // Rekursivt kald for at spørge igen
         }
-    }
+    } */
 /*
     // Henter og viser valgmuligheder fra databasen, og beder brugeren vælge én
     public int promptChoice(SQLite db, int questionId) {
