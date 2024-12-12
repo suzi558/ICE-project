@@ -139,12 +139,4 @@ public class GameUI {
             }
         }
     }
-
-    public static void main(String[] args) {
-        SQLite sqlite = new SQLite();
-        sqlite.connect("jdbc:sqlite:database.db"); // Adjust URL as needed
-
-        GameUI gameUI = new GameUI(sqlite);
-        gameUI.startGame();
-    }
 }
