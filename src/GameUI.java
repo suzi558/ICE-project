@@ -15,7 +15,6 @@ public class GameUI {
      * Constructor to initialize the GameUI with the given SQLite instance.
      * The constructor sets up the scanner for user input, assigns the SQLite instance,
      * initializes the team handler, and prepares the categories list.
-     * @param sqlite SQLite instance to interact with the database.
      */
     public GameUI(SQLite sqlite) {
         this.scanner = new Scanner(System.in); // Initialize scanner for user input
@@ -28,7 +27,7 @@ public class GameUI {
      * Starts the game by setting up teams, loading categories, and running the game loop.
      */
     public void startGame() {
-        System.out.println("Welcome to the game!");
+        System.out.println("Welcome to the Trivial Pursuit!");
         setupTeams(); // Step 1: Set up participating teams
         loadCategories(); // Step 2: Load categories and their questions from the database
         playGame(); // Step 3: Main gameplay loop
