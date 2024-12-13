@@ -19,6 +19,7 @@ public class Questions {
     public int getId() {
         return id;
     }
+
     public int getCategoryID() {
         return categoryID;
     }
@@ -42,4 +43,9 @@ public class Questions {
     public int getPoints() {
         return points;
     }
+
+    public  String toString(){
+        return getId()+", "+getCategoryID()+", "+getText()+", "+getCorrectAnswer()+", "+getOtherChoice1()+", "+getOtherChoice2()+", "+getPoints();
+    }
+
 }

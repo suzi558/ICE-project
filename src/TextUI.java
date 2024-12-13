@@ -60,7 +60,7 @@ public class TextUI {
 
     public void getCategoriesQuestions(ArrayList<String> questions) {
 
-
+/*
         switch(textUI.scan.nextLine())
         {
 
@@ -91,7 +91,7 @@ public class TextUI {
                 break;
 
 
-        }
+        }*/
     }
 
     // Viser en liste med overskrift

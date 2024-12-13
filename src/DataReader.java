@@ -1,20 +1,19 @@
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class SQLite {
+public class DataReader {
 
-Connection conn;
+    Connection conn;
 
-public void connect (String url){
+    public void connect(String url) {
 
-    try {
-        conn = DriverManager.getConnection(url);
-        System.out.println("SQL connect works! HALLELUJAH");
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
+        try {
+            conn = DriverManager.getConnection(url);
+            System.out.println("SQL connect works! HALLELUJAH");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
-}
 
     public ArrayList<Questions> getQuestions() {
         ArrayList<Questions> questionsList = new ArrayList<>();
@@ -49,6 +48,7 @@ public void connect (String url){
 
         return questionsList;
     }
+}
 
 /*
     public ArrayList<String> getCategories(){
