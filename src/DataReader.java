@@ -9,7 +9,7 @@ public class DataReader {
 
         try {
             conn = DriverManager.getConnection(url);
-            System.out.println("SQL connect works! HALLELUJAH");
+            System.out.println("SQL connect works!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -18,17 +18,21 @@ public class DataReader {
     public ArrayList<Questions> getQuestions() {
         ArrayList<Questions> questionsList = new ArrayList<>();
 
+
         // Query String
-        String question = "SELECT ID, Question, correctAnswer, otherChoice, otherChoice2, point, CategoryID FROM QUESTIONS;";
+        String dbstring = "SELECT QuestionID, Question, correctAnswer, otherChoice, otherChoice2, point, CategoryID FROM QUESTIONS; ";
+
 
         try {
             Statement stmt = conn.createStatement();
             // Execute
-            ResultSet rs = stmt.executeQuery(question);
+            ResultSet rs = stmt.executeQuery(dbstring);
 
             while (rs.next()) {
                 // Fetch data for each column
-                int id = rs.getInt("ID");
+
+                //Question variables
+                int questionID = rs.getInt("QuestionID");
                 String text = rs.getString("Question");
                 String correctAnswer = rs.getString("correctAnswer");
                 String otherChoice1 = rs.getString("otherChoice");
@@ -36,11 +40,14 @@ public class DataReader {
                 int points = rs.getInt("point");
                 int categoryID = rs.getInt("CategoryID");
 
-                // Create a Questions object
-                Questions quest = new Questions(id, text, correctAnswer, otherChoice1, otherChoice2, points, categoryID);
 
-                // Add the Questions object to the list
+                // Create a Questions object
+                Questions quest = new Questions(questionID, text, correctAnswer, otherChoice1, otherChoice2, points, categoryID);
+
+
+                // Add the Questions+Categories object to the lists
                 questionsList.add(quest);
+
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -48,11 +55,7 @@ public class DataReader {
 
         return questionsList;
     }
-}
 
-/*
-    public ArrayList<String> getCategories(){
-            ArrayList<String> data = new ArrayList<>();
 
             String categories = "SELECT Category FROM Categories";
 

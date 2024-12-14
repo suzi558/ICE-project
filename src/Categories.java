@@ -2,20 +2,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Categories {
+    private DataReader reader;
+
+
     private int id; // Et unikt ID for kategorien.
     private String categoryName; // Navnet på kategorien.
     private List<Questions> questions; // En liste, der holder på alle spørgsmål i denne kategori.
 
     // Constructoren initialiserer id og CategoryName med de værdier, der gives som parametre.
-    public Categories(int id, String categoryName) {
+    public Categories(String categoryName, int id) {
         this.id = id;
         this.categoryName = categoryName;
         this.questions = new ArrayList<>(); // Initialiser som en tom liste
     }
 
+    public Categories(DataReader reader){
+        this.reader = reader;
+    }
+
+    public int getId() { return id; }
+
     public String getCategoryName() {
         return categoryName;
     }
+
+  //Printer alle kategorier (Fejl) Conn
+    public void getCategories() {
+        for (Categories c : reader.getCategories()) {
+            System.out.println(c.toString());
+        }
+    }
+
 
 
     // Metode til at hente spørgsmål fra databasen
@@ -44,4 +61,9 @@ public class Categories {
     public List<Questions> getQuestions() {
         return questions;
     }
+
+    public String toString(){
+        return getId()+". "+getCategoryName();
+    }
+
 }

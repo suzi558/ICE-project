@@ -16,6 +16,8 @@ public class Questions {
         this.points = points;
         this.categoryID = categoryID; // Tilføj denne linje
     }
+    public Questions(){}
+
     public int getId() {
         return id;
     }
