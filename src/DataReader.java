@@ -57,26 +57,48 @@ public class DataReader {
     }
 
 
-            String categories = "SELECT Category FROM Categories";
+    public ArrayList<Categories> getCategories() {
+        ArrayList<Categories> categoryList = new ArrayList<>();
 
-            try {
+        if (conn == null) {
+            System.out.println("Connection is null. Did you call connect()?");
+            return categoryList;
+        }
 
-                Statement stmt = conn.createStatement();
+        String categories = "SELECT ID, Category FROM Categories";
 
-                ResultSet rs = stmt.executeQuery(categories);
+        try {
 
-                while(rs.next()){
+            Statement stmt = conn.createStatement();
 
-                    String row = rs.getString("Category");
-                    data.add(row);
-                }
+            ResultSet rs = stmt.executeQuery(categories);
+
+            while (rs.next()) {
+
+                String categoryName = rs.getString("Category");
+                int id = rs.getInt("ID");
+
+                Categories category = new Categories(categoryName, id);
+
+                categoryList.add(category);
 
             }
-            catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        return data;
+
+        } catch (SQLException e) {
+            System.out.println("Error" + e.getMessage());
+        }
+        return categoryList;
     }
+
+
+
+
+}
+
+
+
+
+    /*
 
     public ArrayList<String> getCorrectAnswer(){
         ArrayList<String> data = new ArrayList<>();
@@ -175,7 +197,10 @@ public class DataReader {
     }
 
     }
-*/
+
+
+     */
+
 
 
 

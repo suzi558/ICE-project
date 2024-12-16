@@ -13,7 +13,7 @@ public class Main {
         reader.connect(url);
         GameUI Game = new GameUI(reader);
 
-        Game.chooseCategory();
+        Game.startGame();
 
         /*
         for (Questions q : db.getQuestions()) {

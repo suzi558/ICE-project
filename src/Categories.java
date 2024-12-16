@@ -26,7 +26,7 @@ public class Categories {
         return categoryName;
     }
 
-  //Printer alle kategorier (Fejl) Conn
+  //Printer alle kategorier
     public void getCategories() {
         for (Categories c : reader.getCategories()) {
             System.out.println(c.toString());
@@ -36,10 +36,10 @@ public class Categories {
 
 
     // Metode til at hente spørgsmål fra databasen
-    public void loadQuestions(DataReader sqlite) {
+    public void loadQuestions() {
         try {
             // Hent alle spørgsmål fra SQLite-klassen
-            ArrayList<Questions> allQuestions = sqlite.getQuestions();
+            ArrayList<Questions> allQuestions = reader.getQuestions();
 
             // Filtrer spørgsmålene baseret på kategori-ID
             for (Questions question : allQuestions) {
