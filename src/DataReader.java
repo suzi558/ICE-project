@@ -1,8 +1,7 @@
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class SQLite {
+public class DataReader {
 
     Connection conn;
 

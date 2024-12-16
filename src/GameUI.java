@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,7 +8,7 @@ import java.util.Scanner;
  */
 public class GameUI {
     private Scanner scanner; // Used to get user input
-    private SQLite sqlite; // Used to interact with the database
+    private DataReader sqlite; // Used to interact with the database
     private TeamHandler teamHandler; // Handles team-related operations
     private List<Categories> categories; // Stores all game categories
 
@@ -16,7 +17,7 @@ public class GameUI {
      * The constructor sets up the scanner for user input, assigns the SQLite instance,
      * initializes the team handler, and prepares the categories list.
      */
-    public GameUI(SQLite sqlite) {
+    public GameUI(DataReader sqlite) {
         this.scanner = new Scanner(System.in); // Initialize scanner for user input
         this.sqlite = sqlite; // Assign SQLite instance
         this.teamHandler = new TeamHandler(); // Initialize team handler
@@ -71,6 +72,9 @@ public class GameUI {
     /**
      * Runs the main gameplay loop, allowing teams to answer questions.
      */
+    /**
+     * Runs the main gameplay loop, allowing teams to answer questions.
+     */
     private void playGame() {
         boolean questionsRemaining = true; // Flag to track if questions are available
 
@@ -87,25 +91,36 @@ public class GameUI {
                     continue; // Move to the next team's turn
                 }
 
-                // Display the question and answer choices
+                // *** Tilføj den tilfældige blanding her ***
+                // Display the question and shuffle the answer choices
+                List<String> answerChoices = new ArrayList<>();
+                answerChoices.add(question.getCorrectAnswer());
+                answerChoices.add(question.getOtherChoice1());
+                answerChoices.add(question.getOtherChoice2());
+
+                Collections.shuffle(answerChoices); // Shuffle the answer choices
+
                 System.out.println("Question: " + question.getText());
-                System.out.println("1: " + question.getCorrectAnswer());
-                System.out.println("2: " + question.getOtherChoice1());
-                System.out.println("3: " + question.getOtherChoice2());
+                for (int i = 0; i < answerChoices.size(); i++) {
+                    System.out.println((i + 1) + ": " + answerChoices.get(i));
+                }
                 System.out.println("You have 10 seconds to answer!");
 
-                Timer.startTimer(); // Start a countdown timer for answering
+                // Start the timer and get the user's answer
+                Timer.startTimer();
+                int answer = getNumericInput();
 
-                int answer = getNumericInput(); // Get the team's answer
-                if (validateAnswer(answer, question)) {
+                // Validate the answer
+                if (answer >= 1 && answer <= 3 && answerChoices.get(answer - 1).equals(question.getCorrectAnswer())) {
                     System.out.println("Correct! You earn " + question.getPoints() + " points.");
-                    team.addPoint(question.getPoints()); // Award points for correct answer
+                    team.addPoint(question.getPoints());
                 } else {
                     System.out.println("Wrong answer. No points awarded.");
                 }
             }
         }
     }
+
 
     /**
      * Allows the team to choose a category from the available options.

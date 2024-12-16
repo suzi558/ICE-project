@@ -14,11 +14,9 @@ public class Questions {
         this.otherChoice1 = otherChoice1;
         this.otherChoice2 = otherChoice2;
         this.points = points;
-        this.categoryID = categoryID; // Tilføj denne linje
+        this.categoryID = categoryID;
     }
-    public int getId() {
-        return id;
-    }
+
     public int getCategoryID() {
         return categoryID;
     }

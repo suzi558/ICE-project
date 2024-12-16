@@ -19,7 +19,7 @@ public class Categories {
 
 
     // Metode til at hente spørgsmål fra databasen
-    public void loadQuestions(SQLite sqlite) {
+    public void loadQuestions(DataReader sqlite) {
         try {
             // Hent alle spørgsmål fra SQLite-klassen
             ArrayList<Questions> allQuestions = sqlite.getQuestions();
