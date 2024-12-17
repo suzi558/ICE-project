@@ -26,7 +26,7 @@ class DataReader {
 class Categories {
 - int id
 - String categoryName
-- String questions
+- List<Questions> questions
 + loadQuestions()
 + getQuestions()
 }
