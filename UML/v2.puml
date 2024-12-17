@@ -1,0 +1,76 @@
+@startuml
+
+class GameUI {
+- Scanner scanner
+- DataReader sqlite
+- TeamHandler teamHandler
+- List<Categories> categories
+
++ startGame()
++ setupTeams()
++ playGame()
++ loadCategories()
+- chooseCategory()
+- getQuestion()
+- validateAnswer()
+- announceWinner()
+}
+
+class DataReader {
+- conn: Connection
++ connect()
++ getQuestion()
++ getCategories()
+}
+
+class Categories {
+- int id
+- String categoryName
+- String questions
++ loadQuestions()
++ getQuestions()
+}
+
+class Questions {
+ - int id
+ - String text
+ - String correctAnswer
+ - String otherChoice1
+ - String otherChoice2
+ - int points
+ - int categories
+ + getCategoryID()
+ + getText()
+ + getPoints()
+}
+
+class TeamHandler {
+- ArrayList<Team> teams
+- DataReader sqlite
++ addTeam()
++ getWinner()
++ updatePoint()
+}
+
+class Team {
+- String TeamName
+- int points
++ getTeamName()
++ getPoints()
++ addPoint()
+}
+
+class Timer {
++ startTimer()
+}
+
+' Relationer mellem klasser
+GameUI --> DataReader : uses
+GameUI o-- Categories : has
+GameUI --> TeamHandler : uses
+TeamHandler o-- Team : manages
+TeamHandler --> DataReader : uses
+Categories o-- Questions : has
+TeamHandler --> Timer : uses
+
+@enduml
