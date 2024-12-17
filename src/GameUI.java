@@ -39,7 +39,7 @@ public class GameUI {
      * Sets up the teams by asking the user for the number of teams and their names.
      */
     private void setupTeams() {
-        int numTeams;
+        int numTeams; //oprettes som en tom variabel til at gemme antallet af hold.
         // Prompt the user until they enter a valid number of teams
         do {
             System.out.print("How many teams are participating? (2-5): ");
@@ -47,10 +47,10 @@ public class GameUI {
         } while (numTeams < 2 || numTeams > 5);
 
         // Collect team names and add them to the team handler
-        for (int i = 1; i <= numTeams; i++) {
+        for (int i = 1; i <= numTeams; i++) { //Loop, der kører én gang pr. hold
             System.out.print("Enter name for Team " + i + ": ");
-            String teamName = scanner.nextLine();
-            teamHandler.addTeam(new Team(teamName)); // Create and add a new team
+            String teamName = scanner.nextLine(); //Læs holdnavnet ind fra brugeren
+            teamHandler.addTeam(new Team(teamName)); // Opret et nyt Team-objekt og tilføj det til teamHandler
         }
     }
 
@@ -62,6 +62,7 @@ public class GameUI {
 
         for (int i = 0; i < categoryNames.size(); i++) {
             categories.add(new Categories(i + 1, categoryNames.get(i))); // Create and add category objects
+            //i + 1 som ID (starter ved 1).
         }
 
         for (Categories category : categories) {
