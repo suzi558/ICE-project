@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class TeamHandler {
-    private ArrayList<Team> teams;
-    private SQLite sqlite;
+    public ArrayList<Team> teams;
+    private DataReader sqlite;
 
     // Konstruktør
     public TeamHandler() {
         teams = new ArrayList<>();
-        sqlite = new SQLite(); // Opretter en instans af SQLite
+        sqlite = new DataReader(); // Opretter en instans af SQLite
     }
 
     // Metode til at tilføje et team

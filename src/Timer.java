@@ -1,7 +1,4 @@
-import java.sql.Time;
-import java.util.Stack;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class Timer {
 Timer(){
@@ -22,9 +19,6 @@ Timer(){
        finally {
        System.out.println("Time is up ladies and gentlemen!");
        }
-
-
-
 
 
        }

@@ -1,24 +1,13 @@
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-
 public class Main {
-
     public static void main(String[] args) {
+        // Initialiser SQLite-objektet
+        DataReader sqlite = new DataReader();
+        sqlite.connect("jdbc:sqlite:sqlite.db"); // Tilpas URL til din database
 
-        var url = "jdbc:sqlite:sqlite.db";
+        // Opret en instans af GameUI
+        GameUI gameUI = new GameUI(sqlite);
 
-        SQLite SQL = new SQLite();
-
-        SQL.connect(url);
-        SQL.getQuestion();
-
-
-
+        // Start spillet
+        gameUI.startGame();
     }
-
 }
