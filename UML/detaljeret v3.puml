@@ -1,0 +1,89 @@
+@startuml
+
+class GameUI {
+- Scanner scanner
+- DataReader sqlite
+- TeamHandler teamHandler
+- List<Categories> categories
+
++ GameUI(DataReader sqlite)
++ startGame()
++ setupTeams()
++ playGame()
++ loadCategories()
+- chooseCategory(): Categories
+- getQuestion(category: Categories): Questions
+- validateAnswer(answer: int, question: Questions): boolean
+- announceWinner()
+}
+
+class DataReader {
+- Connection conn
+
++ DataReader()
++ connect(url: String)
++ getQuestion(): ArrayList<Questions>
++ getCategories(): ArrayList<String>
+}
+
+class Categories {
+- int id
+- String categoryName
+- List<Questions> questions
+
++ Categories(id: int, categoryName: String)
++ loadQuestions(sqlite: DataReader)
++ getQuestions(): List<Questions>
++ getCategoryName(): String
+}
+
+class Questions {
+- int id
+- String text
+- String correctAnswer
+- String otherChoice1
+- String otherChoice2
+- int points
+- int categories
+
++ Questions(id: int, text: String, correctAnswer: String, otherChoice1: String, otherChoice2: String, points: int, categories: int)
++ getCategoryID(): int
++ getText(): String
++ getPoints(): int
+}
+
+class TeamHandler {
+- ArrayList<Team> teams
+- DataReader sqlite
+
++ TeamHandler()
++ addTeam(team: Team)
++ getWinner(): Team
++ updatePoint(team: Team, points: int)
+}
+
+class Team {
+- String teamName
+- int points
+
++ Team(teamName: String)
++ getTeamName(): String
++ getPoints(): int
++ addPoint(points: int)
+}
+
+class Timer {
++ Timer()
++ startTimer()
+}
+
+' Relationer mellem klasser
+GameUI --> DataReader : uses
+GameUI o-- Categories : has
+GameUI --> TeamHandler : uses
+TeamHandler o-- Team : manages
+TeamHandler --> DataReader : uses
+Categories o-- Questions : has
+TeamHandler --> Timer : uses
+
+@enduml
